@@ -2,7 +2,7 @@ from decouple import config, Csv
 
 # for bot.py
 
-BOT_TOKEN = config('BOT_TOKEN')  # Токен бота
+BOT_TOKEN = config('BOT_TOKEN')  # Токен бота.
 
 admin_id = config('admin_id', cast=int)  # Твой айди аккаунта
 

@@ -2,11 +2,14 @@ import aioschedule
 import asyncio
 import random
 import handlers
+import traceback
+
 from aiogram import executor, types
 from dispatcher import dp
 from dispatcher import bot
 from config import admin_id, kanals
 from read_links import links
+
 
 ver = 1.0
 
@@ -57,19 +60,19 @@ async def action():
         await send_media_group(content, groups[0])
     except Exception:
         await bot.send_message(admin_id, 'Ошибка с отправкой контента в первой группе')
-        print(Exception)
+        traceback.print_exc()
     try:
         content = links()
         await send_media_group(content, groups[1])
     except Exception:
         await bot.send_message(admin_id, 'Ошибка с отправкой контента во второй группе')
-        print(Exception)
+        traceback.print_exc()
     try:
         content = links()
         await send_media_group(content, groups[2])
     except Exception:
         await bot.send_message(admin_id, 'Ошибка с отправкой контента в третьей группе')
-        print(Exception)
+        traceback.print_exc()
 
 
 async def scheduler():

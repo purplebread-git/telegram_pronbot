@@ -55,18 +55,21 @@ async def action():
     try:
         content = links()
         await send_media_group(content, groups[0])
-    except:
+    except Exception:
         await bot.send_message(admin_id, 'Ошибка с отправкой контента в первой группе')
+        print(Exception)
     try:
         content = links()
         await send_media_group(content, groups[1])
-    except:
+    except Exception:
         await bot.send_message(admin_id, 'Ошибка с отправкой контента во второй группе')
+        print(Exception)
     try:
         content = links()
         await send_media_group(content, groups[2])
-    except:
+    except Exception:
         await bot.send_message(admin_id, 'Ошибка с отправкой контента в третьей группе')
+        print(Exception)
 
 
 async def scheduler():

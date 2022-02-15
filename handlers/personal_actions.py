@@ -2,11 +2,14 @@
 import re
 from dispatcher import dp, bot
 from config import admin_id
-
+from bot import action
 count = 0
 check_media_group = [[], []]
 check_media_group1 = [[], []]
 
+@dp.message_handler(commands='send')
+async def message_handler(message):
+    await action()
 
 @dp.message_handler(content_types=["photo", 'video'])
 async def message_handler(message):

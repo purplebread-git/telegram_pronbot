@@ -1,4 +1,3 @@
-# -*- coding: utf-8 -*- #
 def links():
     with open('porn/porn.txt', 'r') as r:
         readlines = r.readlines()

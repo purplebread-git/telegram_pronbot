@@ -45,11 +45,11 @@ async def create_content(content):
     con_1 = content[0][0]
     con_2 = content[1][0]
     try:
-        con_title = ' '.join((list(filter(None, re.split('\W|\d', con_1['caption'])))))
+        con_title = (' '.join((list(filter(None, re.split('\W|\d', con_1['caption'])))))).decode('UTF-8')
         check_true = True
     except:
         try:
-            con_title = ' '.join((list(filter(None, re.split('\W|\d', con_2['caption'])))))
+            con_title = (' '.join((list(filter(None, re.split('\W|\d', con_2['caption'])))))).decode('UTF-8')
             check_true = True
         except:
             check_true = False

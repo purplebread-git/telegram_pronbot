@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*- #
 def links():
-    with open('porn/porn.txt', 'r', encoding='utf-8') as r:
+    with open('porn/porn.txt', 'r') as r:
         readlines = r.readlines()
         title = str(readlines[0]).split('\n')
         types_con_1 = str(readlines[1]).split('\n')

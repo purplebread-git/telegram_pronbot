@@ -1,3 +1,5 @@
+# -*- coding: utf-8 -*- #
+
 from telethon import TelegramClient, events
 import re
 import config
@@ -6,7 +8,6 @@ api_id = config.api_id
 api_hash = config.api_hash
 my_channel_id = config.my_channel_id
 channels = config.channels
-
 client = TelegramClient('myGrab', api_id, api_hash)
 print("GRAB - Started")
 

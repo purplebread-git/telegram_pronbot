@@ -15,7 +15,7 @@ print("GRAB - Started")
 
 @client.on(events.Album(chats=channels))
 async def handler(event):
-
+    await client.get_dialogs()
     global text_message
     try:
         if event.original_update.message.message != '':

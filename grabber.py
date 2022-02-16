@@ -3,6 +3,7 @@
 from telethon import TelegramClient, events
 import re
 import config
+import traceback
 
 api_id = config.api_id
 api_hash = config.api_hash
@@ -14,6 +15,7 @@ print("GRAB - Started")
 
 @client.on(events.Album(chats=channels))
 async def handler(event):
+
     global text_message
     try:
         if event.original_update.message.message != '':
@@ -26,9 +28,9 @@ async def handler(event):
 
                 await client.send_message(my_channel_id, file=event.messages, message=text_message)
         else:
-            print('Ошибка')
-    except:
-        print('Ошибка')
+            print('Ошибка 1 ')
+    except Exception:
+        traceback.print_exc()
 
 
 client.start()

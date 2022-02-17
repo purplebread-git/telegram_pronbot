@@ -1,6 +1,9 @@
 # telegram_pronbot
 
 #### Этот бот создан для граббинга медиафайлов с каналов telegram 18+ и рассылки по вашим каналам
+`python: 3.7` `aiogram: 2.16` `telethon: 1.24.0` `aioschedule: 0.5.2` `python-decouple: 3.6` 
+
+
 
 
 ------------

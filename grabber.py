@@ -1,19 +1,19 @@
-# -*- coding: utf-8 -*- #
-
-from telethon import TelegramClient, events
 import re
 import config
-import traceback
+from traceback import print_exc
+from telethon import TelegramClient, events
 
-api_id = config.api_id
-api_hash = config.api_hash
-my_channel_id = config.my_channel_id
-channels = config.channels
-client = TelegramClient('myGrab', api_id, api_hash)
+
+API_ID = config.API_ID
+API_HASH = config.API_HASH
+BOT_ID = config.BOT_ID
+CHANNELS_FOR_GRAB = config.CHANNELS_FOR_GRAB
+
+client = TelegramClient('myGrab', API_ID, API_HASH)
 print("GRAB - Started")
 
 
-@client.on(events.Album(chats=channels))
+@client.on(events.Album(chats=CHANNELS_FOR_GRAB))
 async def handler(event):
     await client.get_dialogs()
     global text_message
@@ -25,13 +25,9 @@ async def handler(event):
                 # Проверка на наличие ссылок в альбоме
                 re.search("(?P<url>https?://[^\s]+)", event.original_update.message.message).group()
             except:
-
-                await client.send_message(my_channel_id, file=event.messages, message=text_message)
-        else:
-            print('Ошибка 1 ')
+                await client.send_message(BOT_ID, file=event.messages, message=text_message)
     except Exception:
-        traceback.print_exc()
-
+        print_exc()
 
 client.start()
 client.run_until_disconnected()

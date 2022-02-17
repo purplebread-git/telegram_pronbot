@@ -1,7 +1,6 @@
-# -*- coding: utf-8 -*- #
 import re
 from dispatcher import dp, bot
-from config import admin_id
+from config import ADMIN_ID
 from bot import action
 
 count = 0
@@ -9,6 +8,7 @@ check_media_group = [[], []]
 check_media_group1 = [[], []]
 
 
+# Можно использовать команду /send для внеотложной отправки контента
 @dp.message_handler(commands='send')
 async def message_handler(message):
     await action()
@@ -24,23 +24,15 @@ async def message_handler(message):
     else:
         if len(check_media_group[0]) == 1 and len(check_media_group[1]) == 0:
             if check_media_group[0][0] == media_group_id:
-                check_media_group[1].append(media_group_id)
-                check_media_group1[1].append(msg)
+                check_media_group[1].append(media_group_id) and check_media_group1[1].append(msg)
 
         elif len(check_media_group1[0]) == 1 and len(check_media_group1[1]) == 1:
             await create_content(check_media_group1)
-            check_media_group[0] = []
-            check_media_group[1] = []
-            check_media_group1[0] = []
-            check_media_group1[1] = []
-            check_media_group[0].append(media_group_id)
-            check_media_group1[0].append(msg)
+            check_media_group[0], check_media_group[1], check_media_group1[0], check_media_group1[1] = []
+            check_media_group[0].append(media_group_id) and check_media_group1[0].append(msg)
         else:
             print('Ошибка')
-            check_media_group[0] = []
-            check_media_group[1] = []
-            check_media_group1[0] = []
-            check_media_group1[1] = []
+            check_media_group[0], check_media_group[1], check_media_group1[0], check_media_group1[1] = []
 
 
 async def create_content(content):
@@ -56,7 +48,7 @@ async def create_content(content):
             check_true = True
         except:
             check_true = False
-            await bot.send_message(admin_id, 'Нет описания для контента')
+            await bot.send_message(ADMIN_ID, 'Нет описания для контента')
     if check_true:
         try:
             file_id_con_1 = con_1['photo'][0]['file_id']
@@ -66,7 +58,7 @@ async def create_content(content):
                 file_id_con_1 = con_1['video']['file_id']
                 type_con_1 = 'video'
             except:
-                await bot.send_message(admin_id, 'Ошибка c первым вложением')
+                await bot.send_message(ADMIN_ID, 'Ошибка c первым вложением')
 
         try:
             file_id_con_2 = con_2['photo'][0]['file_id']
@@ -76,7 +68,7 @@ async def create_content(content):
                 file_id_con_2 = con_2['video']['file_id']
                 type_con_2 = 'video'
             except:
-                await bot.send_message(admin_id, 'Ошибка cо вторым вложением')
+                await bot.send_message(ADMIN_ID, 'Ошибка cо вторым вложением')
         try:
             with open('porn/porn.txt', 'a') as f:
                 text = str(
@@ -84,4 +76,4 @@ async def create_content(content):
                 print(con_title)
                 f.write(text)
         except:
-            await bot.send_message(admin_id, 'Ошибка с записью')
+            await bot.send_message(ADMIN_ID, 'Ошибка с записью')

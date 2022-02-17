@@ -14,4 +14,3 @@ def links():
     with open('porn/porn.txt', 'w') as w:
         w.write(text)
     return title[0], types_con_1[0], file_id_con_1[0], types_con_2[0], file_id_con_2[0]
-#print(links())

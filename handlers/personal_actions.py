@@ -24,7 +24,8 @@ async def message_handler(message):
     else:
         if len(check_media_group[0]) == 1 and len(check_media_group[1]) == 0:
             if check_media_group[0][0] == media_group_id:
-                check_media_group[1].append(media_group_id) and check_media_group1[1].append(msg)
+                check_media_group[1].append(media_group_id)
+                check_media_group1[1].append(msg)
 
         elif len(check_media_group1[0]) == 1 and len(check_media_group1[1]) == 1:
             await create_content(check_media_group1)
@@ -32,7 +33,8 @@ async def message_handler(message):
             check_media_group[1] = []
             check_media_group1[0] = []
             check_media_group1[1] = []
-            check_media_group[0].append(media_group_id) and check_media_group1[0].append(msg)
+            check_media_group[0].append(media_group_id)
+            check_media_group1[0].append(msg)
         else:
             print('Ошибка')
             check_media_group[0] = []

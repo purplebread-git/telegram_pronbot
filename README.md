@@ -17,3 +17,24 @@ grabber.py
 bot.py
 ------------
 Получает на вход контент от `grabber.py`. Обрабатывает с помощью `handlers/personal_actions.py` и записывает в `porn/porn.txt`
+
+Запуск
+------------
+Найдите `config.py` и подставьте свои данные в переменные. В исходной версии используется библиотека `decouple` для подкачивания данных в переменные из файла `.env`.  
+  
+Рекомендую добавить файл `.env` в корень telegram_pronbot и прописать там следующее:
+```
+BOT_TOKEN = Токен бота
+ADMIN_ID = ID твоего аккаунта, через который будет работать client grabber.py
+CHANNELS_FOR_SEND = ID каналов для отправки сформированного контента
+API_ID = Айди API приложения Telegram
+API_HASH = Хэш API приложения Telegram 
+BOT_ID = ID твоего бота
+CHANNELS_FOR_GRAB = ID каналов, которые нужно будет "грабить"
+```
+- BOT_TOKEN - @BotFather в telegram  
+- API_ID и API_HASH - https://my.telegram.org/auth?to=apps  
+- Для определения ID каналов, себя и бота можете воспользоваться @getmyid_bot в telegram  
+  
+Запускаем `bot.py` и `grabber.py` и наслаждаемся результатом!
+

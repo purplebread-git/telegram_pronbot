@@ -28,11 +28,17 @@ async def message_handler(message):
 
         elif len(check_media_group1[0]) == 1 and len(check_media_group1[1]) == 1:
             await create_content(check_media_group1)
-            check_media_group[0], check_media_group[1], check_media_group1[0], check_media_group1[1] = []
+            check_media_group[0] = []
+            check_media_group[1] = []
+            check_media_group1[0] = []
+            check_media_group1[1] = []
             check_media_group[0].append(media_group_id) and check_media_group1[0].append(msg)
         else:
             print('Ошибка')
-            check_media_group[0], check_media_group[1], check_media_group1[0], check_media_group1[1] = []
+            check_media_group[0] = []
+            check_media_group[1] = []
+            check_media_group1[0] = []
+            check_media_group1[1] = []
 
 
 async def create_content(content):
